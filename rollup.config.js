@@ -16,7 +16,7 @@ export default [
         file: packageJson.main,
         format: "cjs",
         sourcemap: "inline",
-        name: "my-inview",
+        name: "my-inview-component",
       },
       {
         file: packageJson.module,
