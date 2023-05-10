@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "target": "es6",
+        "lib": ["dom", "esnext"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "declaration": true,
+        "declarationDir": "types",
+        "emitDeclarationOnly": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
+        "strictBindCallApply": true,
+        "strictNullChecks": true
+    },
+    "include": ["src"]
+}
