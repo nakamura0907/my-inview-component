@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Fade: React.FC = () => {
-    return (
-        <div></div>
-    )
-}
+  return <div></div>;
+};
 
-export default Fade
+export default Fade;
