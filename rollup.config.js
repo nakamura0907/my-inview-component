@@ -8,6 +8,9 @@ import del from "rollup-plugin-delete";
 const dts = require("rollup-plugin-dts").default;
 const packageJson = require("./package.json");
 
+const isDev = process.env.NODE_ENV === "development";
+const sourcemap = isDev ? "inline" : false;
+
 export default [
   {
     input: "src/index.ts",
@@ -15,13 +18,12 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
-        sourcemap: "inline",
-        name: "my-inview-component",
+        sourcemap,
       },
       {
         file: packageJson.module,
         format: "esm",
-        sourcemap: "inline",
+        sourcemap,
       },
     ],
     plugins: [
@@ -36,7 +38,7 @@ export default [
   },
   {
     input: "dist/types/index.d.ts",
-    output: [{ file: packageJson.types, format: "es" }],
+    output: [{ file: packageJson.types, format: "esm" }],
     plugins: [dts(), del({ hook: "buildEnd", targets: "dist/types" })],
   },
 ];
