@@ -26,12 +26,13 @@ export default [
     ],
     plugins: [
       del({ targets: "dist/*" }),
-      external(),
-      resolve(),
-      commonjs(),
       typescript({ tsconfig: "./tsconfig.build.json" }),
+      external(),
+      commonjs(),
+      resolve(),
       terser(),
     ],
+    external: ["react", "react-dom"],
   },
   {
     input: "dist/types/index.d.ts",
