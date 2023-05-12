@@ -21,11 +21,11 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "build:dev": "NODE_ENV=development rollup -c --bundleConfigAsCjs",
+    "test": "jest",
+    "prettier": "prettier --write src/**/*.{ts,tsx}",
     "lint": "eslint --cache src/**/*.{ts,tsx}",
     "prepare": "husky install",
-    "prepublishOnly": "npm run build",
-    "prettier": "prettier --write src/**/*.{ts,tsx}",
-    "test": "jest"
+    "prepublishOnly": "npm run build"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -42,7 +42,6 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
-    "@rollup/plugin-terser": "^0.4.1",
     "@rollup/plugin-typescript": "^11.1.0",
     "@types/jest": "^29.5.1",
     "@types/react": "^18.2.6",

@@ -1,7 +1,6 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
-import terser from "@rollup/plugin-terser";
 import external from "rollup-plugin-peer-deps-external";
 import del from "rollup-plugin-delete";
 
@@ -32,7 +31,6 @@ export default [
       external(),
       commonjs(),
       resolve(),
-      terser(),
     ],
     external: ["react", "react-dom"],
   },
