@@ -1,6 +1,7 @@
 import React from "react";
 
 export interface IntersectionObserverOptions extends IntersectionObserverInit {
+  /** 1度だけ交差の監視を行う */
   triggerOnce?: boolean;
 }
 
@@ -8,6 +9,9 @@ const defaultOptions: IntersectionObserverOptions = {
   triggerOnce: false,
 };
 
+/**
+ * {ref}を指定した要素の交差を監視する
+ */
 const useIntersectionObserver = (options = defaultOptions) => {
   const { triggerOnce, ...observerOptions } = options;
 
