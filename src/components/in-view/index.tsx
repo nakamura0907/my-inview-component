@@ -1,9 +1,7 @@
 import React from "react";
-import useIntersectionObserver, {
-  IntersectionObserverOptions,
-} from "../../hooks/useIntersectionObserver";
+import useInView, { InViewOptions } from "../../hooks/useInView";
 
-export interface InViewProps extends IntersectionObserverOptions {
+export interface InViewProps extends InViewOptions {
   children: (isIntersecting: boolean) => React.ReactNode;
 }
 
@@ -20,7 +18,7 @@ export interface InViewProps extends IntersectionObserverOptions {
 const InView: React.FC<InViewProps> = (props) => {
   const { children, root, rootMargin, threshold, triggerOnce } = props;
 
-  const { ref, isIntersecting } = useIntersectionObserver({
+  const { ref, isIntersecting } = useInView({
     root,
     rootMargin,
     threshold,
