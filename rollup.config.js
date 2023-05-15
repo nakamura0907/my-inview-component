@@ -1,12 +1,14 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
-import terser from "@rollup/plugin-terser";
 import external from "rollup-plugin-peer-deps-external";
 import del from "rollup-plugin-delete";
 
 const dts = require("rollup-plugin-dts").default;
 const packageJson = require("./package.json");
+
+const isDev = process.env.NODE_ENV === "development";
+const sourcemap = isDev ? "inline" : false;
 
 export default [
   {
@@ -15,13 +17,12 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
-        sourcemap: "inline",
-        name: "my-inview-component",
+        sourcemap,
       },
       {
         file: packageJson.module,
         format: "esm",
-        sourcemap: "inline",
+        sourcemap,
       },
     ],
     plugins: [
@@ -30,13 +31,12 @@ export default [
       external(),
       commonjs(),
       resolve(),
-      terser(),
     ],
     external: ["react", "react-dom"],
   },
   {
     input: "dist/types/index.d.ts",
-    output: [{ file: packageJson.types, format: "es" }],
+    output: [{ file: packageJson.types, format: "esm" }],
     plugins: [dts(), del({ hook: "buildEnd", targets: "dist/types" })],
   },
 ];
