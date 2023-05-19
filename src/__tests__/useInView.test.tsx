@@ -1,12 +1,25 @@
+import React from "react";
 import useInView from "../hooks/useInView";
-import { renderHook } from "@testing-library/react";
+import { render, renderHook } from "@testing-library/react";
+
+// TODO: テストで交差を検知できるようにする
 
 const IntersectionObserverMock = () => ({
   observe: () => null,
+  disconnect: () => null,
 });
 window.IntersectionObserver = jest
   .fn()
   .mockImplementation(IntersectionObserverMock);
+
+const HookWrapper = () => {
+  const { ref, isIntersecting } = useInView();
+  return (
+    <div ref={ref}>
+      <p data-testid="isIntersecting">{isIntersecting ? "true" : "false"}</p>
+    </div>
+  );
+};
 
 describe("hooks/useInView.ts", () => {
   it("デフォルト状態のテスト", () => {
@@ -19,5 +32,11 @@ describe("hooks/useInView.ts", () => {
         isIntersecting: false,
       }),
     );
+  });
+  it("レンダーテスト", () => {
+    const { getByTestId } = render(<HookWrapper />);
+    const isIntersecting = getByTestId("isIntersecting");
+
+    expect(isIntersecting.textContent).toBe("false");
   });
 });
