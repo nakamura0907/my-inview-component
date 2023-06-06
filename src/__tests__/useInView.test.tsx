@@ -2,16 +2,6 @@ import React from "react";
 import useInView from "../hooks/useInView";
 import { render, renderHook } from "@testing-library/react";
 
-// TODO: テストで交差を検知できるようにする
-
-const IntersectionObserverMock = () => ({
-  observe: () => null,
-  disconnect: () => null,
-});
-window.IntersectionObserver = jest
-  .fn()
-  .mockImplementation(IntersectionObserverMock);
-
 const HookWrapper = () => {
   const { ref, isIntersecting } = useInView();
   return (
