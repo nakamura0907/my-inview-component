@@ -1,7 +1,5 @@
-// export { default as Fade } from "./components/fade";
-
 export type * from "./components/in-view";
 export { default as InView } from "./components/in-view";
 
-export type * from "./hooks/useIntersectionObserver";
-export { default as useIntersectionObserver } from "./hooks/useIntersectionObserver";
+export type * from "./hooks/useInView";
+export { default as useInView } from "./hooks/useInView";

@@ -1,18 +1,18 @@
 import React from "react";
 
-export interface IntersectionObserverOptions extends IntersectionObserverInit {
+export interface InViewOptions extends IntersectionObserverInit {
   /** 1度だけ交差の監視を行う */
   triggerOnce?: boolean;
 }
 
-const defaultOptions: IntersectionObserverOptions = {
+const defaultOptions: InViewOptions = {
   triggerOnce: false,
 };
 
 /**
  * {ref}を指定した要素の交差を監視する
  */
-const useIntersectionObserver = (options = defaultOptions) => {
+const useInView = (options = defaultOptions) => {
   const { triggerOnce, ...observerOptions } = options;
 
   const [target, setTarget] = React.useState<Element | null>(null);
@@ -48,4 +48,4 @@ const useIntersectionObserver = (options = defaultOptions) => {
   };
 };
 
-export default useIntersectionObserver;
+export default useInView;
